@@ -1,64 +1,39 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { AppWrap, MotionWrap } from "@/Wrapper";
-// import { urlFor, client } from "../../client";
+import { AppWrap } from "@/Wrapper";
+import { Motion } from "@/components";
+import { client } from "@/client";
+import { ProductQuery } from "@/actions/query";
+import { type Products } from "@/types/SanityResults";
 import "./Products.scss";
 
-const Products = () => {
-  const [products, setProducts] = useState([]);
-
-  //   useEffect(() => {
-  //     const query = '*[_type == "works"]';
-
-  //     client.fetch(query).then((data) => {
-  //       setWorks(data);
-  //     });
-  //   }, []);
+const Products = async () => {
+  const products = await client.fetch<Products[]>(ProductQuery);
 
   return (
     <>
-      <h2 className="head-text">
-        Our Work <span>And</span> Our Pride
-      </h2>
-      <motion.div
+      <h2 className="head-text">Products</h2>
+      <Motion
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delayChildren: 0.6 }}
         className="app__work-portfolio"
       >
-        {products.map((work, index) => (
+        {products.map((product, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <Image src={"/api.png"} width={60} height={60} alt={"Work img"} />
-
-              <motion.div
-                whileHover={{ opacity: [0, 1] }}
-                transition={{
-                  duration: 0.25,
-                  ease: "easeInOut",
-                  staggerChildren: 0.5,
-                }}
-                className="app__work-hover app__flex"
-              ></motion.div>
+              <img src={product.imgUrl} alt={product.title} />
             </div>
 
             <div className="app__work-content app__flex">
-              <h4 className="bold-text">Title</h4>
+              <h4 className="bold-text">{product.title}</h4>
               <p className="p-text" style={{ marginTop: 10 }}>
-                Discription
+                {product.description}
               </p>
             </div>
           </div>
         ))}
-      </motion.div>
+      </Motion>
     </>
   );
 };
 
-export default AppWrap(
-  MotionWrap(Products, "app__works"),
-  "products",
-  "app__primarybg"
-);
+export default AppWrap(Products, "products", "app__primarybg");

@@ -1,23 +1,13 @@
-"use client";
-
-import React from "react";
 import { AppWrap } from "@/Wrapper";
 import { motion } from "framer-motion";
 import "./Header.scss";
 import Image from "next/image";
+import { client } from "@/client";
+import { HeaderQuery } from "@/actions/query";
 
-const scaleVariants = {
-  whileInView: {
-    scale: [0, 1],
-    opacity: [0, 1],
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-    },
-  },
-};
-
-const Header = () => {
+const Header = async () => {
+  const post = await client.fetch(HeaderQuery);
+  console.log(post);
   return <div />;
   // <div className="app__header app__flex">
   //   {/* <motion.div

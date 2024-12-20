@@ -30,7 +30,7 @@ const Work = () => {
   return (
     <>
       <h2 className="head-text">
-        Our Services At<span> Mspace Drone Technology</span> Section
+        Our Services At<span> AMD Drones</span> on Action
       </h2>
 
       <motion.div

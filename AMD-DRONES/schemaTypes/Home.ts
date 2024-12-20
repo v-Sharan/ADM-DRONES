@@ -21,4 +21,4 @@ const Home = defineType({
   ],
 })
 
-export default Home
+export default Home;

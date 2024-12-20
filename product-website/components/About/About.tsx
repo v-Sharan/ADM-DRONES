@@ -21,9 +21,10 @@ const About = () => {
   return (
     <>
       <h2 className="head-text">
-        Our aim is to revolutionize the skies with cutting-edge solutions that
+        Text
+        {/* Our aim is to revolutionize the skies with cutting-edge solutions that
         redefine possibilities and inspire awe,{" "}
-        <span>we craft experiences that elevate imagination</span> <br />
+        <span>we craft experiences that elevate imagination</span> <br /> */}
         {/* with <span>Good Knowledge</span> */}
       </h2>
 
