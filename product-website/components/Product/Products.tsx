@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AppWrap } from "@/Wrapper";
+import { AppWrap, MotionWrap } from "@/Wrapper";
 import { Motion } from "@/components";
 import { client } from "@/client";
 import { ProductQuery } from "@/actions/query";
@@ -36,4 +36,8 @@ const Products = async () => {
   );
 };
 
-export default AppWrap(Products, "products", "app__primarybg");
+export default AppWrap(
+  MotionWrap(Products, "app__works"),
+  "products",
+  "app__primarybg"
+);

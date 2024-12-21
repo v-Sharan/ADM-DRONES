@@ -5,5 +5,6 @@ import Products from "./Product/Products";
 import About from "./About/About";
 import Contact from "./Contact/Contact";
 import Motion from "./Motion";
+import Email from "./EmailTemplate";
 
-export { Navbar, Header, Services, Products, About, Contact, Motion };
+export { Navbar, Header, Services, Products, About, Contact, Motion, Email };

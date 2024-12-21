@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
-// import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "@/Wrapper";
-// import { client } from "../../client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { MdOutlineMail } from "react-icons/md";
 import { BsTelephoneForward } from "react-icons/bs";
@@ -27,25 +24,31 @@ const Footer = () => {
     formState: { errors },
   } = useForm<FormType>();
 
-  const handlePost: SubmitHandler<FormType> = (data) => {
+  const handlePost: SubmitHandler<FormType> = async (data) => {
     setLoading(true);
-    // client
-    //   .create({
-    //     _type: "contact",
-    //     ...data,
-    //   })
-    //   .then(() => {
-    //     setLoading(false);
-    //     setIsFormSubmitted(true);
-    //   })
-    //   .catch((err) => console.log(err));
-    reset({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+        }),
+      });
+      console.log(await response.json());
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+      reset({ name: "", email: "", message: "" });
+    }
+    // setIsFormSubmitted(false);
   };
 
   return (
-    <>
+    <React.Fragment>
       <h2 className="head-text">Contact Us</h2>
-
       <div className="app__footer-cards">
         <div className="app__footer-card ">
           <MdOutlineMail />
@@ -106,7 +109,7 @@ const Footer = () => {
           <h3 className="head-text">Thank you for getting in touch!</h3>
         </div>
       )}
-    </>
+    </React.Fragment>
   );
 };
 

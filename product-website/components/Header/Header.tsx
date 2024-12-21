@@ -1,63 +1,28 @@
+"use client";
+
 import { AppWrap } from "@/Wrapper";
-import { motion } from "framer-motion";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "./Header.scss";
-import Image from "next/image";
-import { client } from "@/client";
-import { HeaderQuery } from "@/actions/query";
 
-const Header = async () => {
-  const post = await client.fetch(HeaderQuery);
-  console.log(post);
-  return <div />;
-  // <div className="app__header app__flex">
-  //   {/* <motion.div
-  //     variants={scaleVariants}
-  //     whileInView={scaleVariants.whileInView}
-  //     className="app__header--circles"
-  //   >
-  //     {["/assets/amazon.png", "/assets/api.png"].map((circle, index) => (
-  //       <div className="circle-cmp app__flex" key={`circle-${index}`}>
-  //         <Image
-  //           src={circle}
-  //           alt="profile_bg"
-  //           width={60}
-  //           height={60}
-  //           style={{ borderRadius: 10 }}
-  //         />
-  //       </div>
-  //     ))}
-  //   </motion.div> */}
-
-  //   <motion.div
-  //     whileInView={{ opacity: [0, 1] }}
-  //     transition={{ duration: 0.5, delayChildren: 0.5 }}
-  //     className="app__header-img"
-  //   >
-  //     <motion.div
-  //       whileInView={{ x: [-100, 0], opacity: [0, 1] }}
-  //       transition={{ duration: 0.5 }}
-  //       className="app__header-ani"
-  //     >
-  //       <div className="app__header-badge">
-  //         <div className="tag-cmp app__flex">
-  //           <p className="p-text">Software Development</p>
-  //         </div>
-  //         <div className="tag-cmp app__flex">
-  //           <p className="p-text">Drone Light Show</p>
-  //         </div>
-  //         <div className="tag-cmp app__flex">
-  //           <p className="p-text">Swarm Automation</p>
-  //         </div>
-  //         <div className="tag-cmp app__flex">
-  //           <p className="p-text">Artificial intelligence</p>
-  //         </div>
-  //         <div className="tag-cmp app__flex">
-  //           <p className="p-text">Application Development</p>
-  //         </div>
-  //       </div>
-  //     </motion.div>
-  //   </motion.div>
-  // </div>
+const Header = () => {
+  return (
+    <div />
+    // <Carousel autoPlay infiniteLoop swipeable emulateTouch showThumbs={false}>
+    //   <div>
+    //     <img src="/assets/1.png" />
+    //     <p className="legend">Legend 1</p>
+    //   </div>
+    //   <div>
+    //     <img src="https://cdn.sanity.io/files/ilakyt62/production/9b7e315f5216692aa98acc08fb67b12d18f12def.png" />
+    //     {/* <p className="legend">Legend 2</p> */}
+    //   </div>
+    //   <div>
+    //     <img src="assets/3.jpeg" />
+    //     {/* <p className="legend">Legend 3</p> */}
+    //   </div>
+    // </Carousel>
+  );
 };
 
 export default AppWrap(Header, "home", "");

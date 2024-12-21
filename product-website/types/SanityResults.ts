@@ -129,15 +129,7 @@ export type Services = {
   _rev: string;
   title?: string;
   description?: string;
-  imgUrl?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    _type: "file";
-  };
+  imgUrl: string;
 };
 
 export type Products = {
