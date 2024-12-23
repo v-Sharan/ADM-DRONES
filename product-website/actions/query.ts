@@ -14,3 +14,7 @@ export const ServicesQuery =
 export const productFindQuery = (_id: Products["_id"]) =>
   defineQuery(`*[_type == "products" && _id match ${_id}]{...,"imgUrl":imgUrl.asset->url
     }`);
+
+export const AboutQuery =
+  defineQuery(`*[_type == "about"]{...,"imgUrl":imgUrl.asset->url
+    }`);

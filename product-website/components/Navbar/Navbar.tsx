@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="app__navbar">
       <div className="app__navbar-logo">
         <a href="/#">
-          <Image src={"/next.svg"} width={50} height={30} alt="logo" />
+          <Image src={"/assets/Logo.png"} width={50} height={30} alt="logo" />
         </a>
         <p className="head-text">ADM Drones</p>
       </div>

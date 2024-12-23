@@ -20,14 +20,15 @@ const Products = async () => {
         {products.map((product, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <img src={product.imgUrl} alt={product.title} />
+              {product.tags[0] == "image" ? (
+                <img src={product.imgUrl} alt={product.title} />
+              ) : (
+                <video src={product.imgUrl} autoPlay />
+              )}
             </div>
 
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{product.title}</h4>
-              <p className="p-text" style={{ marginTop: 10 }}>
-                {product.description}
-              </p>
             </div>
           </div>
         ))}

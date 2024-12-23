@@ -20,8 +20,20 @@ const Product = defineType({
       title: 'ImageUrl',
       type: 'file',
       options: {
-        accept: 'image/*',
+        accept: 'video/*,image/*',
       },
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [
+        {
+          name: 'tag',
+          title: 'Tag',
+          type: 'string',
+        },
+      ],
     }),
   ],
 })

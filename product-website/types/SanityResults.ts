@@ -110,15 +110,7 @@ export type About = {
   _rev: string;
   title?: string;
   description?: string;
-  imgUrl?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    _type: "file";
-  };
+  imgUrl?: string;
 };
 
 export type Services = {
@@ -141,6 +133,7 @@ export type Products = {
   title?: string;
   description?: string;
   imgUrl: string;
+  tags: string[];
 };
 
 export type Home = {
