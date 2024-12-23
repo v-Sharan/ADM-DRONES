@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 
 import "./Navbar.scss";
+import Link from "next/link";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -13,16 +14,16 @@ const Navbar = () => {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <a href="/#">
+        <Link href="/#">
           <Image src={"/assets/Logo.png"} width={50} height={30} alt="logo" />
-        </a>
+        </Link>
         <p className="head-text">ADM Drones</p>
       </div>
       <ul className="app__navbar-links">
         {["home", "products", "services", "about", "contact"].map((item) => (
           <li className="app__flex " key={`link-${item}`}>
             <div />
-            <a href={`#${item}`}>{item}</a>
+            <Link href={`/#${item}`}>{item}</Link>
           </li>
         ))}
       </ul>
@@ -40,9 +41,9 @@ const Navbar = () => {
               {["home", "products", "services", "about", "contact"].map(
                 (item) => (
                   <li key={item}>
-                    <a href={`#${item}`} onClick={() => setToggle(false)}>
+                    <Link href={`/#${item}`} onClick={() => setToggle(false)}>
                       {item}
-                    </a>
+                    </Link>
                   </li>
                 )
               )}

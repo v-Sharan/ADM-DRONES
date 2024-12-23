@@ -24,6 +24,21 @@ const Product = defineType({
       },
     }),
     defineField({
+      name: 'thumbUrl',
+      title: 'ThumbUrl',
+      type: 'image',
+      options: {
+        accept: 'image/*',
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'versions',
+      title: 'Versions',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'productVersion'}]}],
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',

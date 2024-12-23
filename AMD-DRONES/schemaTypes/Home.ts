@@ -13,12 +13,13 @@ const Home = defineType({
     defineField({
       name: 'imgUrl',
       title: 'ImageUrl',
-      type: 'file',
+      type: 'image',
       options: {
         accept: 'image/*',
+        hotspot: true,
       },
     }),
   ],
 })
 
-export default Home;
+export default Home

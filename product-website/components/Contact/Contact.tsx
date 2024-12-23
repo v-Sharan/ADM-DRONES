@@ -36,14 +36,19 @@ const Footer = () => {
           ...data,
         }),
       });
-      console.log(await response.json());
+
+      if (!response.ok) {
+        throw Error("Failed to Send an message");
+      }
+
+      setIsFormSubmitted(true);
     } catch (error: any) {
       console.log(error);
+      setIsFormSubmitted(false);
     } finally {
       setLoading(false);
       reset({ name: "", email: "", message: "" });
     }
-    // setIsFormSubmitted(false);
   };
 
   return (

@@ -5,6 +5,7 @@ import { client } from "@/client";
 import { ProductQuery } from "@/actions/query";
 import { type Products } from "@/types/SanityResults";
 import "./Products.scss";
+import Link from "next/link";
 
 const Products = async () => {
   const products = await client.fetch<Products[]>(ProductQuery);
@@ -19,17 +20,15 @@ const Products = async () => {
       >
         {products.map((product, index) => (
           <div className="app__work-item app__flex" key={index}>
-            <div className="app__work-img app__flex">
-              {product.tags[0] == "image" ? (
+            <Link href={`/product/${product._id}`}>
+              <div className="app__work-img app__flex">
                 <img src={product.imgUrl} alt={product.title} />
-              ) : (
-                <video src={product.imgUrl} autoPlay />
-              )}
-            </div>
+              </div>
 
-            <div className="app__work-content app__flex">
-              <h4 className="bold-text">{product.title}</h4>
-            </div>
+              <div className="app__work-content app__flex">
+                <h4 className="bold-text">{product.title}</h4>
+              </div>
+            </Link>
           </div>
         ))}
       </Motion>

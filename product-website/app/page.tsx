@@ -1,23 +1,15 @@
-import {
-  Navbar,
-  Header,
-  Services,
-  Products,
-  About,
-  Contact,
-} from "@/components";
+import { Header, Services, Products, About, Contact } from "@/components";
 
-import "./page.scss";
+import React from "react";
 
 export default function Home() {
   return (
-    <div className="app">
-      <Navbar />
+    <React.Fragment>
       <Header />
       <Products />
       <Services />
       <About />
       <Contact />
-    </div>
+    </React.Fragment>
   );
 }

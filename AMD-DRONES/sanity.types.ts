@@ -39,56 +39,6 @@ export type SanityImageDimensions = {
   aspectRatio?: number
 }
 
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageAsset = {
-  _id: string
-  _type: 'sanity.imageAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  metadata?: SanityImageMetadata
-  source?: SanityAssetSourceData
-}
-
-export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
-  location?: Geopoint
-  dimensions?: SanityImageDimensions
-  palette?: SanityImagePalette
-  lqip?: string
-  blurHash?: string
-  hasAlpha?: boolean
-  isOpaque?: boolean
-}
-
 export type Geopoint = {
   _type: 'geopoint'
   lat?: number
@@ -100,6 +50,22 @@ export type Slug = {
   _type: 'slug'
   current?: string
   source?: string
+}
+
+export type ProductVersion = {
+  _id: string
+  _type: 'productVersion'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  versionName?: string
+  description?: string
+  relatedProduct?: {
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    [internalGroqTypeReferenceTo]?: 'products'
+  }
 }
 
 export type About = {
@@ -157,24 +123,25 @@ export type Products = {
     }
     _type: 'file'
   }
-}
-
-export type Home = {
-  _id: string
-  _type: 'home'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  alt?: string
-  imgUrl?: {
+  thumbUrl?: {
     asset?: {
       _ref: string
       _type: 'reference'
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
     }
-    _type: 'file'
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
   }
+  versions?: Array<{
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    _key: string
+    [internalGroqTypeReferenceTo]?: 'productVersion'
+  }>
+  tags?: Array<string>
 }
 
 export type SanityFileAsset = {
@@ -199,6 +166,65 @@ export type SanityFileAsset = {
   source?: SanityAssetSourceData
 }
 
+export type Home = {
+  _id: string
+  _type: 'home'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  alt?: string
+  imgUrl?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
+export type SanityImageAsset = {
+  _id: string
+  _type: 'sanity.imageAsset'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  originalFilename?: string
+  label?: string
+  title?: string
+  description?: string
+  altText?: string
+  sha1hash?: string
+  extension?: string
+  mimeType?: string
+  size?: number
+  assetId?: string
+  uploadId?: string
+  path?: string
+  url?: string
+  metadata?: SanityImageMetadata
+  source?: SanityAssetSourceData
+}
+
 export type SanityAssetSourceData = {
   _type: 'sanity.assetSourceData'
   name?: string
@@ -206,20 +232,32 @@ export type SanityAssetSourceData = {
   url?: string
 }
 
+export type SanityImageMetadata = {
+  _type: 'sanity.imageMetadata'
+  location?: Geopoint
+  dimensions?: SanityImageDimensions
+  palette?: SanityImagePalette
+  lqip?: string
+  blurHash?: string
+  hasAlpha?: boolean
+  isOpaque?: boolean
+}
+
 export type AllSanitySchemaTypes =
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityImageAsset
-  | SanityImageMetadata
   | Geopoint
   | Slug
+  | ProductVersion
   | About
   | Services
   | Products
-  | Home
   | SanityFileAsset
+  | Home
+  | SanityImageCrop
+  | SanityImageHotspot
+  | SanityImageAsset
   | SanityAssetSourceData
+  | SanityImageMetadata
 export declare const internalGroqTypeReferenceTo: unique symbol

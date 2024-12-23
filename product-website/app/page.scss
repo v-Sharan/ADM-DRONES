@@ -186,3 +186,22 @@
     padding: 2rem;
   }
 }
+
+.product {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  .product__item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.img__product {
+  width: "30%";
+  height: "30%";
+  border-radius: 10px;
+}
