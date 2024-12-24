@@ -1,5 +1,5 @@
 import { AppWrap, MotionWrap } from "@/Wrapper";
-import { client, urlFor } from "@/client";
+import { client } from "@/client";
 import { ServicesQuery } from "@/actions/query";
 import { Services as ServicesType } from "@/types/SanityResults";
 import { Motion } from "@/components";

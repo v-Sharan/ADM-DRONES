@@ -1,5 +1,7 @@
 import "./Footer.scss";
 
-const Footer = () => {};
+const Footer = () => {
+  return <div />;
+};
 
 export default Footer;
