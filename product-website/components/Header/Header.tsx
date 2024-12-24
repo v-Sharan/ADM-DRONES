@@ -1,15 +1,13 @@
 import { AppWrap } from "@/Wrapper";
+import { client } from "@/client";
+import { HeaderQuery } from "@/actions/query";
+import { Home } from "@/types/SanityResults";
+import Carousel from "../Carousel/Carousel";
 import "./Header.scss";
-// import { client } from "@/client";
-// import { HeaderQuery } from "@/actions/query";
-// import { Home } from "@/types/SanityResults";
-// import Carousel from "../Carousel/Carousel";
 
 const Header = async () => {
-  // const imgs = await client.fetch<Home[]>(HeaderQuery);
-  // return <Carousel imgs={imgs} />;
-  return <div />;
+  const imgs = await client.fetch<Home[]>(HeaderQuery);
+  return <Carousel imgs={imgs} />;
 };
 
 export default AppWrap(Header, "home", "");
-// export default Header;

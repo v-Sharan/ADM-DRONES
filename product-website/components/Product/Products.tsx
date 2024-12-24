@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { AppWrap, MotionWrap } from "@/Wrapper";
 import { Motion } from "@/components";
-import { client } from "@/client";
+import { client, urlFor } from "@/client";
 import { ProductQuery } from "@/actions/query";
 import { type Products } from "@/types/SanityResults";
 import "./Products.scss";
@@ -22,7 +21,7 @@ const Products = async () => {
           <div className="app__work-item app__flex" key={index}>
             <Link href={`/product/${product._id}`}>
               <div className="app__work-img app__flex">
-                <img src={product.imgUrl} alt={product.title} />
+                <img src={urlFor(product.imgUrl).url()} alt={product.title} />
               </div>
 
               <div className="app__work-content app__flex">

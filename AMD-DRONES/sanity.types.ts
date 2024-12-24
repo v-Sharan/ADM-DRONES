@@ -60,6 +60,17 @@ export type ProductVersion = {
   _rev: string
   versionName?: string
   description?: string
+  imgUrl?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
   relatedProduct?: {
     _ref: string
     _type: 'reference'

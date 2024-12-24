@@ -2,7 +2,7 @@ import React from "react";
 import { Motion } from "@/components";
 
 import { AppWrap, MotionWrap } from "@/Wrapper";
-import { client } from "@/client";
+import { client, urlFor } from "@/client";
 import { AboutQuery } from "@/actions/query";
 import { About as AboutTypes } from "@/types/SanityResults";
 import "./About.scss";
@@ -25,16 +25,13 @@ const About = async () => {
       <div className="app__profiles">
         {abouts.map((about) => (
           <Motion
-            style={{
-              
-            }}
             whileInView={{ opacity: 1 }}
             whileHover={{ scale: 1.2 }}
             transition={{ duration: 0.5, type: "tween" }}
             className="app__profile-item"
             key={about._id}
           >
-            <img src={about.imgUrl} alt={about.title} />
+            <img src={urlFor(about.imgUrl).url()} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
               {about.title}
             </h2>

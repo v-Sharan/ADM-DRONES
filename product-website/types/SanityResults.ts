@@ -58,8 +58,8 @@ export type ProductVersion = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  versionName?: string;
-  description?: string;
+  versionName: string;
+  description: string;
   imgUrl: string;
   relatedProduct?: {
     _ref: string;
@@ -77,7 +77,15 @@ export type About = {
   _rev: string;
   title?: string;
   description?: string;
-  imgUrl?: string;
+  imgUrl?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    _type: "file";
+  };
 };
 
 export type Services = {
@@ -97,11 +105,11 @@ export type Products = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
-  description?: string;
-  imgUrl?: string;
-  thumbUrl?: string;
-  versions?: ProductVersion[];
+  title: string;
+  description: string;
+  imgUrl: string;
+  thumbUrl: string;
+  versions: ProductVersion[];
   tags?: Array<string>;
 };
 
@@ -134,7 +142,17 @@ export type Home = {
   _updatedAt: string;
   _rev: string;
   alt?: string;
-  imgUrl?: string;
+  imgUrl?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type SanityImageCrop = {

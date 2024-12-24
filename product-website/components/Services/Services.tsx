@@ -1,6 +1,5 @@
 import { AppWrap, MotionWrap } from "@/Wrapper";
-import { client } from "@/client";
-import Image from "next/image";
+import { client, urlFor } from "@/client";
 import { ServicesQuery } from "@/actions/query";
 import { Services as ServicesType } from "@/types/SanityResults";
 import { Motion } from "@/components";
@@ -21,7 +20,7 @@ const Services = async () => {
         {Services.map((service, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <Image src={service.imgUrl} alt={service._id} fill />
+              <img src={service.imgUrl} alt={service._id} />
             </div>
 
             <div className="app__work-content app__flex">

@@ -18,9 +18,10 @@ const About = defineType({
     defineField({
       name: 'imgUrl',
       title: 'ImageUrl',
-      type: 'file',
+      type: 'image',
       options: {
         accept: 'image/*',
+        hotspot: true,
       },
     }),
   ],

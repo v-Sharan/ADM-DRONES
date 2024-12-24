@@ -1,6 +1,8 @@
 import { productFindQuery } from "@/actions/query";
-import { client } from "@/client";
+import { client, urlFor } from "@/client";
 import { type Products } from "@/types/SanityResults";
+import { Motion } from "@/components";
+import React from "react";
 
 const ProductDetails = async ({
   params,
@@ -12,27 +14,50 @@ const ProductDetails = async ({
   const products = await client.fetch<Products[]>(productFindQuery(_id));
 
   return (
-    <div className="product">
-      {products.map(
-        ({ imgUrl, _id, description, title, versions, thumbUrl }) => (
-          <div key={`key--${_id}`} className="product__item">
-            <h1>{title}</h1>
-            <img
-              src={`${thumbUrl}?h=500&w=500`}
-              // src={isMobile ? `${imgUrl}?h=300&w=300` : `${imgUrl}?h=400&w=400`}
-              alt={`alt__${_id}`}
-              className="img__product"
-            />
-            <p>{description}</p>
-            <div>
-              {versions?.map((version) => (
-                <div key={version._id}>{version.versionName}</div>
+    <Motion
+      whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+      transition={{ duration: 0.5 }}
+      className={`app__flex`}
+    >
+      <div
+        className="product"
+        style={{
+          flexDirection: "column",
+          gap: 10,
+        }}
+      >
+        <h2 className="head-text">{products[0].title}</h2>
+        <p>{products[0].description}</p>
+        <h1>Versions</h1>
+        <Motion
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delayChildren: 0.6 }}
+          className="app__work-portfolio"
+        >
+          {products.map((product, index) => (
+            <React.Fragment key={`${product._id}-${index}`}>
+              {product.versions.map((ver) => (
+                <React.Fragment key={`${ver._id}`}>
+                  <div className="app__work-item app__flex" key={index}>
+                    <div className="app__work-img app__flex">
+                      <img
+                        src={urlFor(ver.imgUrl).url()}
+                        alt={ver.versionName}
+                      />
+                    </div>
+                    <h1>{ver.versionName}</h1>
+
+                    <div className="app__work-content app__flex">
+                      <h4 className="bold-text">{ver.description}</h4>
+                    </div>
+                  </div>
+                </React.Fragment>
               ))}
-            </div>
-          </div>
-        )
-      )}
-    </div>
+            </React.Fragment>
+          ))}
+        </Motion>
+      </div>
+    </Motion>
   );
 };
 
