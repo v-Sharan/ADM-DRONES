@@ -2,14 +2,7 @@
 
 import Link from "next/link";
 
-export default function Error({
-  // @typescript-eslint/no-unused-vars
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+export default function Error() {
   return (
     <div
       style={{

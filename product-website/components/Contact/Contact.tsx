@@ -42,7 +42,7 @@ const Footer = () => {
       }
 
       setIsFormSubmitted(true);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.log(error);
       setIsFormSubmitted(false);
     } finally {
