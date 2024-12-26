@@ -6,5 +6,16 @@ import About from "./About/About";
 import Contact from "./Contact/Contact";
 import Motion from "./Motion";
 import Email from "./EmailTemplate";
+import CarouselImage from "./Carousel/CarouselImage";
 
-export { Navbar, Header, Services, Products, About, Contact, Motion, Email };
+export {
+  Navbar,
+  Header,
+  Services,
+  Products,
+  About,
+  Contact,
+  Motion,
+  Email,
+  CarouselImage,
+};

@@ -3,8 +3,8 @@ import { Motion } from "@/components";
 import { client, urlFor } from "@/client";
 import { ProductQuery } from "@/actions/query";
 import { type Products } from "@/types/SanityResults";
-import "./Products.scss";
 import Link from "next/link";
+import "./Products.scss";
 
 const Products = async () => {
   const products = await client.fetch<Products[]>(ProductQuery);

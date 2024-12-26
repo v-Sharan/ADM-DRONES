@@ -59,8 +59,16 @@ export type ProductVersion = {
   _updatedAt: string;
   _rev: string;
   versionName: string;
-  description: string;
-  imgUrl: string;
+  description: string[];
+  imgUrl: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    _type: "file";
+  };
   relatedProduct?: {
     _ref: string;
     _type: "reference";
@@ -95,7 +103,7 @@ export type Services = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  description?: string;
+  description?: string[];
   imgUrl?: string;
 };
 
@@ -106,7 +114,7 @@ export type Products = {
   _updatedAt: string;
   _rev: string;
   title: string;
-  description: string;
+  description: string[];
   imgUrl: string;
   thumbUrl: string;
   versions: ProductVersion[];

@@ -1,10 +1,10 @@
 import { defineQuery } from "next-sanity";
 import { Products } from "@/types/SanityResults";
 
-export const HeaderQuery = defineQuery(`*[_type == "home"]`);
+export const HeaderQuery = defineQuery(`*[_type == "home"]{imgUrl,alt,_id}`);
 
 export const ProductQuery =
-  defineQuery(`*[_type == "products"]{name,title,_id,tags,"imgUrl":thumbUrl
+  defineQuery(`*[_type == "products"]{name,title,_id,"imgUrl":thumbUrl
     }`);
 
 export const ServicesQuery =

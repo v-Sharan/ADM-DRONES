@@ -1,17 +1,9 @@
 "use client";
 import React from "react";
-import { Home } from "@/types/SanityResults";
 import { Carousel as Slider } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { urlFor } from "@/client";
 
-type HomeBg = {
-  _id: Home["_id"];
-  imgUrl: Home["imgUrl"];
-  alt: Home["alt"];
-};
-
-const Carousel = ({ imgs }: { imgs: HomeBg[] }) => {
+const Carousel = ({ imgs }: { imgs: string[] }) => {
   return (
     <Slider
       autoPlay
@@ -23,10 +15,9 @@ const Carousel = ({ imgs }: { imgs: HomeBg[] }) => {
       showStatus={false}
       dynamicHeight={false}
     >
-      {imgs.map(({ _id, alt, imgUrl }) => (
-        <div key={_id}>
-          <img src={urlFor(imgUrl).url()} alt={alt} />
-          <h1>{alt}</h1>
+      {imgs.map((img, idex) => (
+        <div key={idex}>
+          <img src={img} alt={`img-${idex}`} />
         </div>
       ))}
     </Slider>

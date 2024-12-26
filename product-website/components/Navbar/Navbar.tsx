@@ -15,17 +15,25 @@ const Navbar = () => {
     <nav className="app__navbar">
       <div className="app__navbar-logo">
         <Link href="/#">
-          <Image src={"/assets/Logo.png"} width={50} height={30} alt="logo" />
+          <Image src={"/assets/Logo.png"} width={50} height={40} alt="logo" />
         </Link>
         <p className="head-text">ADM Drones</p>
       </div>
       <ul className="app__navbar-links">
-        {["home", "products", "services", "about", "contact"].map((item) => (
-          <li className="app__flex " key={`link-${item}`}>
-            <div />
-            <Link href={`/#${item}`}>{item}</Link>
-          </li>
-        ))}
+        {["home", "products", "sales and services", "about", "contact"].map(
+          (item) => {
+            return (
+              <li className="app__flex " key={`link-${item}`}>
+                <div />
+                <Link
+                  href={item == "sales and services" ? "/#sales" : `/#${item}`}
+                >
+                  {item}
+                </Link>
+              </li>
+            );
+          }
+        )}
       </ul>
 
       <div className="app__navbar-menu">

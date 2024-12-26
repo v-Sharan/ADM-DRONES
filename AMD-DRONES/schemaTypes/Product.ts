@@ -15,6 +15,7 @@ const Product = defineType({
       title: 'Description',
       type: 'string',
     }),
+
     defineField({
       name: 'imgUrl',
       title: 'ImageUrl',

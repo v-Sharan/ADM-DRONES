@@ -38,6 +38,6 @@ const Services = async () => {
 
 export default AppWrap(
   MotionWrap(Services, "app__works"),
-  "services",
+  "sales",
   "app__primarybg"
 );
